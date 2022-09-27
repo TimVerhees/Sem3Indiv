@@ -21,9 +21,9 @@ public class DatabaseDataInitializer{
     public void populateDatabaseInitialDummyData() {
         if (cardRepository.count() == 0) {
             cardRepository.save(CardEntity.builder().name("Testcard").type("Normal Monster").desc("This is a test card.")
-                    .atk("500").def("250").level(3).race("Insect").attribute("EARTH").ogbanlist("TCG").build());
+                    .atk(500).def(250).level(3).race("Insect").attribute("EARTH").ogbanlist("TCG").build());
             cardRepository.save(CardEntity.builder().name("Dark Magician").type("Normal Monster").desc("The ultimate wizard in terms of attack and defense.")
-                    .atk("2500").def("2100").level(7).race("Spellcaster").attribute("DARK").build());
+                    .atk(2500).def(2100).level(7).race("Spellcaster").attribute("DARK").build());
 
         }
         /*if (userRepository.count() == 0){
