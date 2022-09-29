@@ -45,7 +45,10 @@ public class FakeCardRepositoryImpl implements CardRepository {
         this.savedCards.add(card);
         return card;
     }
-
+    @Override
+    public void deleteById(Long cardId) {
+        this.savedCards.removeIf(cardEntity -> cardEntity.getId().equals(cardId));
+    }
     @Override
     public List<CardEntity> findAll() {
         return Collections.unmodifiableList(savedCards);

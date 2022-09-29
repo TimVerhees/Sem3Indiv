@@ -18,6 +18,8 @@ public interface CardRepository {
 
     List<CardEntity> findAll();
 
+    void deleteById(Long cardId);
+
     int count();
     Optional<CardEntity> findById(long cardId);
 }
