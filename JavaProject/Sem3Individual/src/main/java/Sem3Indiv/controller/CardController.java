@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/cards")
 @AllArgsConstructor
 public class CardController {
@@ -20,11 +21,13 @@ public class CardController {
     private final UpdateCardUseCase updateCardUseCase;
     private final DeleteCardUseCase deleteCardUseCase;
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<GetCardsResponse> getCards() {
         return ResponseEntity.ok(getCardsUseCase.getCards());
     }
 
+    @CrossOrigin
     @GetMapping("{id}")
     public ResponseEntity<Card> getCard(@PathVariable(value = "id") final long id) {
         final Optional<Card> cardOptional = getCardUseCase.getCard(id);

@@ -40,9 +40,11 @@ public class FakeCardRepositoryImpl implements CardRepository {
     }
     @Override
     public CardEntity save(CardEntity card) {
-        card.setId(NEXT_ID);
-        NEXT_ID++;
-        this.savedCards.add(card);
+        if (card.getId() == null) {
+            card.setId(NEXT_ID);
+            NEXT_ID++;
+            this.savedCards.add(card);
+        }
         return card;
     }
     @Override

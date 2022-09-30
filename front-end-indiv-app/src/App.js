@@ -13,17 +13,6 @@ function App() {
         <Route path='/banlist' element={<Banlist />} />
       </Routes>
     </Router>
-    /*<>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#cards">Navbar</Navbar.Brand>
-          <Nav navbar="navbar">
-            <Nav.Link href="#cards">Cards</Nav.Link>
-            <Nav.Link href="#banlist">Banlist</Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-    </>*/
   );
 }
 

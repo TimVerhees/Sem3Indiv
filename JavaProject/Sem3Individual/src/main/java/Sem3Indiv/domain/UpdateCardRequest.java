@@ -13,11 +13,11 @@ import javax.validation.constraints.NotNull;
 public class UpdateCardRequest {
 
     private Long id;
-    @NotNull
+
     private String name;
-    @NotNull
+
     private String type;
-    @NotNull
+
     private String desc;
 
     private int atk;
