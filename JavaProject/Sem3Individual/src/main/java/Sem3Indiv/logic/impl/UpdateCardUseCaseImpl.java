@@ -28,6 +28,7 @@ public class UpdateCardUseCaseImpl implements UpdateCardUseCase {
 
     private void updateFields(UpdateCardRequest request, CardEntity card) {
         card.setName(request.getName());
+        card.setDesc(request.getDesc());
 
         cardRepository.save(card);
     }

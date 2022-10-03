@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Axios from 'axios';
 
-export default function Parent() { 
+/*export default function Parent() { 
     //get data from API
     const url = "http://localhost:8080/";
 
@@ -23,4 +23,4 @@ export default function Parent() {
             <NoteTimeline cards= {cards}/>
         )
 
-} 
+} */
