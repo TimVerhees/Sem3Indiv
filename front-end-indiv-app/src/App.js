@@ -4,15 +4,21 @@ import React from 'react';
 import Navbar from "./components/navbar/navbar"
 import Card from "./pages/navbar/Cards"
 import Banlist from "./pages/navbar/Banlist"
+import Home from "./pages/navbar/Home"
+import {Layout} from "./components/Layout"
+
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' exact element={<Card />} />
-        <Route path='/banlist' element={<Banlist />} />
-      </Routes>
-    </Router>
+    <Layout>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" exact element={<Home />} />
+          <Route path='/cards' exact element={<Card />} />
+          <Route path='/banlist' element={<Banlist />} />
+        </Routes>
+      </Router>
+    </Layout>
   );
 }
 

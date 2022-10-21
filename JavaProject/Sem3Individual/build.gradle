@@ -35,9 +35,9 @@ sonarqube {
 
     properties {
         property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.login", "sqp_47276c3dd722e92ab8fe5a8931e14d85412661c7"
+        property "sonar.login", "sqp_4dbfd280fa8c230b5f1b1155a4d43be7d742f1f5"
         property "sonar.host.url","http://localhost:9000/"
-        property "sonar.projectKey","sem3indiv"
+        property "sonar.projectKey","YuGiOhProject"
     }
 }
 

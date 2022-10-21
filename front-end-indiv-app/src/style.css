@@ -1,0 +1,48 @@
+.w3-card,.w3-card-2{
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+}
+
+.w3-container,.w3-panel{
+    border-radius: 5px 5px 0 0;
+    width: fit-content;
+    text-align: center;
+    margin-right:10px;
+    background-color: white;
+    transition: transform 210ms ease-in-out;
+}
+
+.w3-panel{
+    margin-top:16px;
+    margin-bottom:16px
+}
+
+.card-sizing{
+    height:230px;
+    border-radius: 5px;
+}
+
+.w3-container:hover{
+    transform:scale(1.15,1.15);
+    -webkit-transform:scale(1.15,1.15);
+    -moz-transform:scale(1.15,1.15);
+}
+
+.txt-middle{
+    vertical-align: middle;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+}
+
+.fitting-content{
+    width:fit-content;
+    display:flex;
+}
+
+.card-align{
+    width: fit-content;
+}
+
+.body-positioner{
+    margin-top:3.8rem;
+}

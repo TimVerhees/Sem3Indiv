@@ -3,6 +3,8 @@ import Axios from 'axios';
 import React, { useState } from 'react';
 import http from "../../http-common";
 import styled from "styled-components";
+import '../../style.css'
+import TestCard from '../../images/TestCard.png'
 
 const URL = '//localhost:8080/cards'
 
@@ -62,18 +64,25 @@ function Cards(){
 
   if (!cards) return null;
   return (
-    <div>
-      {cards.map(card => (
-        <div key={card.id}>
-          <p>{card.name}</p>
-          <p>{card.desc}</p>
-        </div>
-      ))}
+    <div class="body-positioner">
+      <div class="fitting-content">
+        {cards.map(card => (
+          <div key={card.id} class="card-align">
+            <div >
+              <div class="w3-card-2 w3-container">
+                  <img src={TestCard} class="card-sizing"></img>
+                <p class="txt-middle">{card.name}</p>
+              </div>
+            </div>
+          </div>
+      ))}</div>
+    
       <p><button onClick={wrapperFunction}>Post Pot of Greed</button></p>
       <div><p><button onClick={updateOnClick}>Update to Pot of Duality</button></p></div>
       <div><p><button onClick={wrapperFunction2}>Delete the third card</button></p></div>
       <div><p><button onClick={pageReload}>Reload page</button></p></div>
-        </div>
+      </div>
+   
   );
   
 
