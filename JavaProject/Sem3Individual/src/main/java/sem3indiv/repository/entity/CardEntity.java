@@ -16,6 +16,6 @@ public class CardEntity {
     private String attribute;
     private int link;
     private String ogbanlist;
-
+    //AMONG US
 
 }
