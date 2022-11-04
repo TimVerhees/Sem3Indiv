@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import http from "../../http-common";
 import styled from "styled-components";
 import '../../style.css'
-import TestCard from '../../images/TestCard.png'
+import TestCard1 from '../../images/TestCard.png'
 
 const URL = '//localhost:8080/cards'
 
@@ -18,6 +18,14 @@ function Cards(){
   }, []);
   console.log(cards);
   
+  const [testCard, setTestCard] = useState();
+    React.useEffect(() => {
+      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark magician").then((response) => {
+        setTestCard(response.data);
+      })
+    }, [])
+    console.log(testCard);
+
   function postOnClick(){
     axios
         .post(URL, {
@@ -62,17 +70,21 @@ function Cards(){
         })
   }
 
+  function nameCheck(testCard){
+    cards.map(card => {if (card.name === testCard.name){
+      console.log(testCard.card_images[1])
+    }else{console.log("Broke")}})
+  }
+
   if (!cards) return null;
   return (
     <div class="body-positioner">
       <div class="fitting-content">
         {cards.map(card => (
           <div key={card.id} class="card-align">
-            <div >
               <div class="w3-card-2 w3-container">
-                  <img src={TestCard} class="card-sizing"></img>
+                  <img src={TestCard1} class="card-sizing"></img>
                 <p class="txt-middle">{card.name}</p>
-              </div>
             </div>
           </div>
       ))}</div>
