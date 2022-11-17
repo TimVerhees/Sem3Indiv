@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-@Service
+/*@Service
 @AllArgsConstructor
 public class GetCardUseCaseImpl implements GetCardUseCase {
 
@@ -18,4 +18,4 @@ public class GetCardUseCaseImpl implements GetCardUseCase {
     public Optional<Card> getCard(long cardId) {
         return cardRepository.findById(cardId).map(CardConvertor::convert);
     }
-}
+}*/

@@ -18,13 +18,13 @@ function Cards(){
   }, []);
   console.log(cards);
   
-  const [testCard, setTestCard] = useState();
+  /*const [testCard, setTestCard] = useState();
     React.useEffect(() => {
       axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark magician").then((response) => {
         setTestCard(response.data);
       })
     }, [])
-    console.log(testCard);
+    console.log(testCard);*/
 
   function postOnClick(){
     axios
@@ -79,20 +79,18 @@ function Cards(){
   if (!cards) return null;
   return (
     <div class="body-positioner">
-      <div class="fitting-content">
+      <div class="wrap">
         {cards.map(card => (
-          <div key={card.id} class="card-align">
-              <div class="w3-card-2 w3-container">
+          <div key={card.id} class="card-align w3-card-2 w3-container">
                   <img src={TestCard1} class="card-sizing"></img>
                 <p class="txt-middle">{card.name}</p>
-            </div>
           </div>
-      ))}</div>
-    
+      ))}
       <p><button onClick={wrapperFunction}>Post Pot of Greed</button></p>
       <div><p><button onClick={updateOnClick}>Update to Pot of Duality</button></p></div>
       <div><p><button onClick={wrapperFunction2}>Delete the third card</button></p></div>
       <div><p><button onClick={pageReload}>Reload page</button></p></div>
+      </div>
       </div>
    
   );

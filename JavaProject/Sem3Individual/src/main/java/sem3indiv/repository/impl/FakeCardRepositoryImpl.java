@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+/*@Repository
 public class FakeCardRepositoryImpl implements CardRepository {
     private static long NEXT_ID = 1;
     private final List<CardEntity> savedCards;
@@ -58,5 +58,5 @@ public class FakeCardRepositoryImpl implements CardRepository {
     @Override
     public int count() {
         return this.savedCards.size();
-    }
-}
+    }*/
+//}

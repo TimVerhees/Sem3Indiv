@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import http from "../../http-common";
+import http from "../http-common";
 import styled from "styled-components";
-import '../../style.css'
+import '../style.css'
 
 const URL = '//localhost:8080/home'
 

@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 
 class GetCardsUseCaseImplTest {
 
-    @Test
+    /*@Test
     void getCards_ShouldReturnAllCardsConverted(){
         //Arrange: Set up code to be used
         CardRepository cardRepositoryMock =
@@ -46,5 +46,5 @@ CardEntity.builder().id(2L).name("Dark Magician").build();
         verify(cardRepositoryMock).findAll();
     }
 
-
+*/
 }

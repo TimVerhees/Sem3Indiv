@@ -7,19 +7,19 @@ public class CardConvertor {
     private CardConvertor() {
 
     }
-    public static Card convert(CardEntity card) {
+    public static Card convert(CardEntity cardEntity) {
         return Card.builder()
-                .id(card.getId())
-                .name(card.getName())
-                .type(card.getType())
-                .desc(card.getDesc())
-                .atk(card.getAtk())
-                .def(card.getDef())
-                .level(card.getLevel())
-                .race(card.getRace())
-                .attribute(card.getAttribute())
-                .link(card.getLink())
-                .ogbanlist(card.getOgbanlist())
+                .id(cardEntity.getId())
+                .name(cardEntity.getName())
+                .type(cardEntity.getType())
+                .desc(cardEntity.getDesc())
+                .atk(cardEntity.getAtk())
+                .def(cardEntity.getDef())
+                .level(cardEntity.getLevel())
+                .race(cardEntity.getRace())
+                .attribute(cardEntity.getAttribute())
+                .link(cardEntity.getLink())
+                .ogbanlist(cardEntity.getOgbanlist())
                 .build();
     }
 }

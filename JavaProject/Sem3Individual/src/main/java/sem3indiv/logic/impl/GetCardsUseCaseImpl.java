@@ -13,10 +13,24 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class GetCardsUseCaseImpl implements GetCardsUseCase{
-    private final CardRepository cardRepository;
+    public CardRepository cardRepository;
 
+    @Override
+    public GetCardsResponse getCards(){
+    List<Card> cards = findAll()
+            .stream()
+            .map(CardConvertor::convert)
+            .toList();
+    return GetCardsResponse.builder()
+            .cards(cards)
+            .build();
+    }
 
+    private List<CardEntity> findAll() {
+        // TODO: replace by country repository method call
 
+        return cardRepository.findAll();
+    }
     /*@Override
     public GetCardsResponse getCards() {
         List<Card> cards = cardRepository.findAll()
@@ -32,21 +46,4 @@ public class GetCardsUseCaseImpl implements GetCardsUseCase{
     public Optional<Card> getCard(long cardId) {
         return cardRepository.findById(cardId).map(CardConverter::convert);
     }*/
-    @Override
-    public GetCardsResponse getCards() {
-        List<CardEntity> results;
-
-        results = cardRepository.findAll();
-
-
-        final GetCardsResponse response = new GetCardsResponse();
-        List<Card> cards = results
-                .stream()
-                .map(CardConvertor::convert)
-                .toList();
-        response.setCards(cards);
-
-        return response;
-    }
-
 }

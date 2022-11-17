@@ -4,9 +4,9 @@
 
 .w3-container,.w3-panel{
     border-radius: 5px 5px 0 0;
-    width: fit-content;
+    width: 157px;
     text-align: center;
-    margin-right:10px;
+    margin-right:48px;
     background-color: white;
     transition: transform 210ms ease-in-out;
 }
@@ -17,7 +17,7 @@
 }
 
 .card-sizing{
-    height:230px;
+    height:325px;
     border-radius: 5px;
 }
 
@@ -34,15 +34,31 @@
     padding-bottom: 8px;
 }
 
-.fitting-content{
-    width:fit-content;
-    display:flex;
-}
-
 .card-align{
-    width: fit-content;
+    width: 222px;
+    margin-bottom: 10px;
 }
 
 .body-positioner{
-    margin-top:3.8rem;
+    
+    margin-left: 5px;
+}
+
+.wrap{
+    width: 97%;
+    flex-flow: row wrap;
+    display: flex;
+    height: 100%;
+    padding-top: 55px;
+    box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+    padding-left: 52px;
+    overflow-y: hidden;
+    margin-top: -10px;
+    z-index: 5;
+    background-color: white;
+}
+
+body {
+    background-image: url(images/yugibg.png);
+    z-index: 0;
 }

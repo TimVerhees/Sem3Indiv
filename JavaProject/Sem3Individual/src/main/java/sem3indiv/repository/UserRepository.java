@@ -1,13 +1,14 @@
 package sem3indiv.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import sem3indiv.repository.entity.UserEntity;
 
 import java.util.List;
 
-public interface UserRepository {
-    boolean existsByCode(String code);
+public interface UserRepository extends JpaRepository<UserEntity, Long>  {
+    //boolean existsByCode(String code);
 
-    boolean existsById(long banlistId);
+    boolean existsById(long userId);
 
     UserEntity findById(long userId);
 
@@ -15,5 +16,5 @@ public interface UserRepository {
 
     List<UserEntity> findAll();
 
-    int count();
+    //int count();
 }

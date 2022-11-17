@@ -2,9 +2,9 @@ import './App.css';
 import {Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import React from 'react';
 import Navbar from "./components/navbar/navbar"
-import Card from "./pages/navbar/Cards"
-import Banlist from "./pages/navbar/Banlist"
-import Home from "./pages/navbar/Home"
+import Card from "./pages/Cards/Cards"
+import Banlist from "./pages/Banlists/Banlist"
+import Home from "./pages/Home"
 import {Layout} from "./components/Layout"
 
 function App() {

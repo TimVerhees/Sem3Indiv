@@ -1,5 +1,6 @@
 package sem3indiv.logic.impl;
 
+import sem3indiv.domain.Card;
 import sem3indiv.domain.CreateCardRequest;
 import sem3indiv.domain.CreateCardResponse;
 import sem3indiv.logic.CreateCardUseCase;
@@ -12,22 +13,14 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class CreateCardUseCaseImpl implements CreateCardUseCase {
-    private final CardRepository cardRepository;
+    private CardRepository cardRepository;
 
     @Override
     public CreateCardResponse createCard(CreateCardRequest request) {
-        if (cardRepository.existsByName(request.getName())) {
+
+        if (existsByName(request.getName())) {
             throw new NameAlreadyExistsException();
         }
-
-        CardEntity savedCard = saveNewCard(request);
-
-        return CreateCardResponse.builder()
-                .cardId(savedCard.getId())
-                .build();
-    }
-
-    private CardEntity saveNewCard(CreateCardRequest request) {
 
         CardEntity newCard = CardEntity.builder()
                 .name(request.getName())
@@ -41,6 +34,23 @@ public class CreateCardUseCaseImpl implements CreateCardUseCase {
                 .link(request.getLink())
                 .ogbanlist(request.getOgbanlist())
                 .build();
-        return cardRepository.save(newCard);
+
+        CardEntity savedCard = saveNewCard(newCard);
+
+        return CreateCardResponse.builder()
+                .cardId(savedCard.getId())
+                .build();
+    }
+
+    private CardEntity saveNewCard(CardEntity card) {
+
+        cardRepository.save((card));
+        return CardEntity.builder().build();
+    }
+
+    private boolean existsByName(String cardName) {
+        // TODO: replace by countryRepository correct method call and return
+        return (cardRepository.existsByName(cardName));
+
     }
 }

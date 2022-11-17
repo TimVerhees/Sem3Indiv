@@ -1,6 +1,6 @@
 package sem3indiv.config.db;
 
-import sem3indiv.repository.impl.FakeCardRepositoryImpl;
+//import sem3indiv.repository.impl.FakeCardRepositoryImpl;
 import lombok.*;
 import sem3indiv.repository.entity.CardEntity;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class DatabaseDataInitializer{
 
-    private FakeCardRepositoryImpl cardRepository;
+    /*private FakeCardRepositoryImpl cardRepository;
     //private UserRepository userRepository;
     @EventListener(ApplicationReadyEvent.class)
     public void populateDatabaseInitialDummyData() {
@@ -28,4 +28,4 @@ public class DatabaseDataInitializer{
             userRepository.save(UserEntity.builder().type("Admin").name("Valky").username("SirValky1999").password("B00l3an558").build());
         }*/
     }
-}
+//}

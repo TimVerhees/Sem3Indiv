@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Banlist {
     private Long id;
-    private Card card;
+    private String name;
     private User user;
-    private List<SubList>subLists;
+    //private BanlistItem banlistItem;
 }
