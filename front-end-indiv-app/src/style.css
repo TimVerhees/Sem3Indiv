@@ -32,6 +32,7 @@
     margin-top: 8px;
     margin-bottom: 8px;
     padding-bottom: 8px;
+    width: 225px;
 }
 
 .card-align{
@@ -53,12 +54,73 @@
     box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
     padding-left: 52px;
     overflow-y: hidden;
-    margin-top: -10px;
+    margin-top: -89px;
     z-index: 5;
     background-color: white;
 }
 
 body {
     background-image: url(images/yugibg.png);
+    background-color: white;
     z-index: 0;
+}
+
+.wrapper .sidebar{
+    background: rgb(255, 255, 255);
+    position: fixed;
+    top:0;
+    right:-450px;
+    width: 450px;
+    height:100%;
+    padding: 10px 0;
+    transition: all 0.5s ease;
+    box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+    z-index: 10;
+}
+
+.wrapper .sidebar .cd-img{
+    margin-top: 4.8rem;
+    margin-bottom:30px;
+    text-align: center;
+}
+.wrapper .sidebar .cd-img img{
+    display:block;
+    height: 350px;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+.wrapper .sidebar .cd-img p{
+    margin-right: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+body.active .wrapper .sidebar{
+   right: 0;
+}
+.wrapper .section{
+    width: calc(100%-450px);
+    margin-left: 450px;
+    transition: all 0.5s ease;
+}
+
+p{
+    word-wrap:break-word !important;
+    width:415px;
+}
+
+.detail-txt{
+    text-align: left !important;
+    
+    
+    height:fit-content;
+}
+
+.desc-box{
+    width:425px;
+    height: 250px;
+    display:flex;
+    height:fit-content;
+    flex-flow:row wrap !important;
+    word-wrap:break-word !important;
+    margin-left: 20px;
 }

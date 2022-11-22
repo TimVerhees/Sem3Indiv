@@ -8,6 +8,7 @@ import TestCard1 from '../../images/TestCard.png'
 
 const URL = '//localhost:8080/cards'
 
+const cardDesc = "";
 function Cards(){
   const [cards, setCard] = useState([]);
     React.useEffect(() => {
@@ -16,7 +17,6 @@ function Cards(){
       setCard(response.data.cards);
     });
   }, []);
-  console.log(cards);
   
   /*const [testCard, setTestCard] = useState();
     React.useEffect(() => {
@@ -25,6 +25,34 @@ function Cards(){
       })
     }, [])
     console.log(testCard);*/
+  const [cname, setCname] = useState([]);
+  const [cdesc, setCdesc] = useState([]);
+  const [catk, setCatk] = useState([]);
+  const [cdef, setCdef] = useState([]);
+  const [clvl, setClvl] = useState([]);
+  const [crace, setCrace] = useState([]);
+  const [cattribute, setCattribute] = useState([]);
+  function CarderClick(e){
+    document.querySelector("body").classList.toggle("active")
+    axios.get(URL+"/"+ e.target.id).then(res => {
+      const cardName = res.data.name;
+      const cardDesc = res.data.desc;
+      const cardAtk = res.data.atk;
+      const cardDef = res.data.def;
+      const cardLvl = res.data.level;
+      const cardAttribute = res.data.attribute;
+      const cardRace = res.data.race;
+      setCdesc(cardDesc)
+      setCname(cardName)
+      setCatk(cardAtk)
+      setCdef(cardDef)
+      setClvl(cardLvl)
+      setCattribute(cardAttribute)
+      setCrace(cardRace)
+    });
+    
+    
+  }
 
   function postOnClick(){
     axios
@@ -70,19 +98,32 @@ function Cards(){
         })
   }
 
-  function nameCheck(testCard){
-    cards.map(card => {if (card.name === testCard.name){
-      console.log(testCard.card_images[1])
-    }else{console.log("Broke")}})
-  }
-
   if (!cards) return null;
   return (
+    <div>
+    <body>
+      <div class="wrapper">
+                <div class="sidebar">
+                    <div class="cd-img">
+                        <img src={TestCard1} ></img>
+                          <h1 >{cname}</h1>
+                          <div class="desc-box detail-txt">
+                           <p>Description: {cdesc}</p> 
+                           <p>Attack: {catk} Defense: {cdef}</p>
+                           <p>Level: {clvl} </p>
+                           <p>Race: {crace} Attribute: {cattribute}</p>
+                          </div>
+                          
+                    </div>
+                </div>
+            </div>
+        </body>
+    
     <div class="body-positioner">
       <div class="wrap">
-        {cards.map(card => (
-          <div key={card.id} class="card-align w3-card-2 w3-container">
-                  <img src={TestCard1} class="card-sizing"></img>
+        {cards.map((card, key) => (
+          <div  class="card-align w3-card-2 w3-container">
+                  <img onClick={CarderClick} key={card.id} id={card.id} src={TestCard1} class="card-sizing" href="#"></img>
                 <p class="txt-middle">{card.name}</p>
           </div>
       ))}
@@ -92,7 +133,9 @@ function Cards(){
       <div><p><button onClick={pageReload}>Reload page</button></p></div>
       </div>
       </div>
-   
+      </div>
+      
+           
   );
   
 

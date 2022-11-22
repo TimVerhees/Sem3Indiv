@@ -11,5 +11,5 @@ public class Banlist {
     private Long id;
     private String name;
     private User user;
-    //private BanlistItem banlistItem;
+    private List<BanlistItem> banlistItems;
 }

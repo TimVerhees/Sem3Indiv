@@ -1,7 +1,12 @@
 package sem3indiv.logic.impl;
 
+import sem3indiv.domain.Banlist;
 import sem3indiv.domain.Card;
+import sem3indiv.repository.entity.BanlistEntity;
 import sem3indiv.repository.entity.CardEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CardConvertor {
     private CardConvertor() {
@@ -21,5 +26,16 @@ public class CardConvertor {
                 .link(cardEntity.getLink())
                 .ogbanlist(cardEntity.getOgbanlist())
                 .build();
+    }
+
+    public static List<Card> convert(List<CardEntity> cardEntities) {
+        List<Card> temp = new ArrayList<>();
+        if (cardEntities == null) {
+            return temp;
+        }
+        for (CardEntity cardEntity : cardEntities) {
+            temp.add(convert(cardEntity));
+        }
+        return temp;
     }
 }

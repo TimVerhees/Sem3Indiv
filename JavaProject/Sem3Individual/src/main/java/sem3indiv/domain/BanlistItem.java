@@ -14,4 +14,7 @@ import java.util.List;
 public class BanlistItem {
     private int id;
     private List<Card> cards;
+    //private List<Banlist> banlist;
+    private String bantype;
+
 }

@@ -17,8 +17,8 @@ import java.util.Optional;
 public class BanlistController {
 
     private final GetBanlistsUseCase getBanlistsUseCase;
-    //private final GetCardUseCase getCardUseCase;
-    //private final CreateCardUseCase createCardUseCase;
+    private final GetBanlistUseCase getBanlistUseCase;
+    private final CreateBanlistUseCase createBanlistUseCase;
     //private final UpdateCardUseCase updateCardUseCase;
     //private final DeleteCardUseCase deleteCardUseCase;
 
@@ -27,22 +27,22 @@ public class BanlistController {
     public ResponseEntity<GetBanlistsResponse> getBanlists() {
         return ResponseEntity.ok(getBanlistsUseCase.getBanlists());
     }
-    /*
+
     @CrossOrigin
     @GetMapping("{id}")
-    public ResponseEntity<Card> getCard(@PathVariable(value = "id") final long id) {
-        final Optional<Card> cardOptional = getCardUseCase.getCard(id);
-        if (cardOptional.isEmpty()) {
+    public ResponseEntity<Banlist> getBanlist(@PathVariable(value = "id") final long id) {
+        final Optional<Banlist> banlistOptional = getBanlistUseCase.getBanlist(id);
+        if (banlistOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok().body(cardOptional.get());
+        return ResponseEntity.ok().body(banlistOptional.get());
     }
 
     @PostMapping()
-    public ResponseEntity<CreateCardResponse> createCard(@RequestBody @Valid CreateCardRequest request) {
-        CreateCardResponse response = createCardUseCase.createCard(request);
+    public ResponseEntity<CreateBanlistResponse> createBanlist(@RequestBody @Valid CreateBanlistRequest request) {
+        CreateBanlistResponse response = createBanlistUseCase.createBanlist(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
-    }
+    }/*
     @PutMapping("{id}")
     public ResponseEntity<Void> updateCard(@PathVariable("id") long id,
                                            @RequestBody @Valid UpdateCardRequest request) {

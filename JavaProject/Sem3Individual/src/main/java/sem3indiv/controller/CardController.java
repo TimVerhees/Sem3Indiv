@@ -16,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CardController {
     private final GetCardsUseCase getCardsUseCase;
-    //private final GetCardUseCase getCardUseCase;
+    private final GetCardUseCase getCardUseCase;
     private final CreateCardUseCase createCardUseCase;
     private final UpdateCardUseCase updateCardUseCase;
     private final DeleteCardUseCase deleteCardUseCase;
@@ -27,7 +27,7 @@ public class CardController {
         return ResponseEntity.ok(getCardsUseCase.getCards());
     }
 
-    /*@CrossOrigin
+    @CrossOrigin
     @GetMapping("{id}")
     public ResponseEntity<Card> getCard(@PathVariable(value = "id") final long id) {
         final Optional<Card> cardOptional = getCardUseCase.getCard(id);
@@ -35,7 +35,7 @@ public class CardController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().body(cardOptional.get());
-    }*/
+    }
 
     @PostMapping()
     public ResponseEntity<CreateCardResponse> createCard(@RequestBody @Valid CreateCardRequest request) {

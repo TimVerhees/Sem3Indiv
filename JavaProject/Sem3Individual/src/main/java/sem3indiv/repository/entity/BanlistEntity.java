@@ -31,11 +31,8 @@ public class BanlistEntity {
     @ManyToOne
     @JoinColumn (name = "user_id")
     private UserEntity user;
-    @ManyToMany (cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "banlist_card",
-            joinColumns = @JoinColumn (name = "banlist_id"),
-            inverseJoinColumns = @JoinColumn (name = "card_id"))
-    private List<CardEntity> cards;
-    //private BanlistItemEntity banlistItem;
+    @OneToMany
+    @JoinColumn (name = "banlist_id")
+    @NotNull
+    private List<BanlistItemEntity> banlistitems;
 }

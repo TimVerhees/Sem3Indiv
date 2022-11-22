@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import java.util.List;
+
 import static com.mysql.cj.MysqlType.LONGTEXT;
 
 @Entity
@@ -45,6 +47,8 @@ public class CardEntity {
     private int link;
     @Column (name = "ogbanlist")
     private String ogbanlist;
+    /*OneToMany (mappedBy = "card")
+    private List<BanlistItemEntity> banlistitems;*/
     //USE JACOCO FOR SONAR
 
 }
