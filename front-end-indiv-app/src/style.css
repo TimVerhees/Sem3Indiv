@@ -98,7 +98,7 @@ body.active .wrapper .sidebar{
    right: 0;
 }
 .wrapper .section{
-    width: calc(100%-450px);
+    width: calc(100% - 450px);
     margin-left: 450px;
     transition: all 0.5s ease;
 }
