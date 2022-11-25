@@ -13,18 +13,10 @@ function Cards(){
   const [cards, setCard] = useState([]);
     React.useEffect(() => {
     axios.get(URL).then((response) => {
-      //response.data.CARDS! .cards IS IMPORTANT ALWAYS USE IT.
       setCard(response.data.cards);
     });
   }, []);
-  
-  /*const [testCard, setTestCard] = useState();
-    React.useEffect(() => {
-      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark magician").then((response) => {
-        setTestCard(response.data);
-      })
-    }, [])
-    console.log(testCard);*/
+
   const [cname, setCname] = useState([]);
   const [cdesc, setCdesc] = useState([]);
   const [catk, setCatk] = useState([]);
@@ -34,24 +26,15 @@ function Cards(){
   const [cattribute, setCattribute] = useState([]);
   function CarderClick(e){
     document.querySelector("body").classList.toggle("active")
-    axios.get(URL+"/"+ e.target.id).then(res => {
-      const cardName = res.data.name;
-      const cardDesc = res.data.desc;
-      const cardAtk = res.data.atk;
-      const cardDef = res.data.def;
-      const cardLvl = res.data.level;
-      const cardAttribute = res.data.attribute;
-      const cardRace = res.data.race;
-      setCdesc(cardDesc)
-      setCname(cardName)
-      setCatk(cardAtk)
-      setCdef(cardDef)
-      setClvl(cardLvl)
-      setCattribute(cardAttribute)
-      setCrace(cardRace)
-    });
-    
-    
+    setTimeout(() => axios.get(URL+"/"+ e.target.id).then(res => {
+      setCdesc(res.data.desc)
+      setCname(res.data.name)
+      setCatk(res.data.atk)
+      setCdef(res.data.def)
+      setClvl(res.data.level)
+      setCattribute(res.data.attribute)
+      setCrace(res.data.race)
+    }), 500) 
   }
 
   function postOnClick(){
@@ -106,7 +89,7 @@ function Cards(){
                 <div class="sidebar">
                     <div class="cd-img">
                         <img src={TestCard1} ></img>
-                          <h1 >{cname}</h1>
+                          <h2 >{cname}</h2>
                           <div class="desc-box detail-txt">
                            <p>Description: {cdesc}</p> 
                            <p>Attack: {catk} Defense: {cdef}</p>

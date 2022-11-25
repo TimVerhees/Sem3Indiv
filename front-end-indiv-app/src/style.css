@@ -50,7 +50,7 @@
     flex-flow: row wrap;
     display: flex;
     height: 100%;
-    padding-top: 55px;
+    padding-top: 150px;
     box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
     padding-left: 52px;
     overflow-y: hidden;
@@ -58,6 +58,26 @@
     z-index: 5;
     background-color: white;
 }
+
+.home-wrap{
+    width: 71.5%;
+    display: flex;
+    padding-top: 150px;
+    box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+    padding-left: 52px;
+    overflow-y: hidden;
+    margin-top: -89px;
+    z-index: 5;
+    background-color: white;
+    position: absolute;
+    margin-left: -256px;
+    justify-content: center;
+}
+
+.home-wrap, html{
+    min-height: 86.9vh;
+}
+
 
 body {
     background-image: url(images/yugibg.png);
@@ -123,4 +143,96 @@ p{
     flex-flow:row wrap !important;
     word-wrap:break-word !important;
     margin-left: 20px;
+}
+
+h1{
+    height: -moz-fit-content;
+    height: fit-content;
+    position: absolute;
+    font-family: "Hertical Serif Demo";
+    letter-spacing: 5px;
+    font-size: 40px;
+}
+
+.login-wrap{
+    height:40%;
+    width:45%;
+    margin-top:155px;
+    background-color: white;
+    z-index: 11;
+    position:absolute;
+    box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+    justify-content: center;
+    display:flex;
+    border-radius: 5px;
+}
+
+.input-wrap{
+    height:12.5%;
+    width: 75%;
+    display:inline-block;
+    position:absolute;
+    font-size: 25px;
+    justify-content: center;
+    display: flex;
+}
+
+.input-user{
+    margin-top: 100px;
+}
+
+.input-pass{
+    margin-top: 220px;
+}
+
+.input-contain{
+    display:flex;
+    justify-content: center;
+}
+
+.input-label{
+    height:fit-content;
+    width:fit-content;
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    z-index: 50;
+    background-color: white;
+}
+
+.user-label{
+    margin-left: -64%;
+    margin-top: 87px;
+}
+
+.pass-label{
+    margin-left: -64%;
+    margin-top: 208px;
+}
+
+.login-btn{
+    height: 13%;
+    width: 22.5%;
+    display: flex;
+    position: absolute;
+    margin-top: 320px;
+    align-items: center;
+    justify-content: center;
+    background-color: #b2591a;
+    border-radius:4px;
+    border-color: black;
+    text-decoration: none;
+    color: white;
+    font-size:30px;
+    font-family: "Hertical Serif Demo";
+    letter-spacing: 3px;
+}
+
+.login-btn:hover{
+    background-color: #48250c;
+    transition: all linear 0.5s;
+}
+
+.scroll-hide{
+    overflow-y: hidden;
 }

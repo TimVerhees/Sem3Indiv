@@ -30,4 +30,96 @@ td, th {
   padding-left:3px;
   width:100%
 }
+
+
+
+.wrapper .sidebarblist{
+  background: rgb(255, 255, 255);
+  position: fixed;
+  top:0;
+  right: -100%;
+  width: 100%;
+  height:100%;
+  padding: 10px 0;
+  transition: all 0.5s ease;
+  box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+  z-index: 10;
+  scroll-behavior: smooth;
+}
+
+.wrapper .sidebarblist .cd-img{
+  margin-top: 4.8rem;
+  margin-bottom:30px;
+  text-align: center;
+}
+.wrapper .sidebarblist .cd-img img{
+  display:block;
+  height: 350px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.wrapper .sidebarblist .cd-img p{
+  margin-right: 20px;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+}
+body.active .wrapper .sidebarblist{
+ right: 0;
+}
+.wrapper .section{
+  width: calc(100% - 450px);
+  margin-left: 450px;
+  transition: all 0.5s ease;
+}
+
+.back-arrow{
+  color:black;
+  position:absolute;
+  margin-top:120px;
+  margin-left: 65px;
+  text-decoration: none;
   
+}
+
+.bancards{
+  z-index:9999;
+  background-color:blue;
+  color:red;
+  margin-top:200px;
+}
+
+.blist-wrap{
+  width: 73%;
+  flex-flow: row wrap;
+  display: flex;
+  height: 100%;
+  padding-top: 150px;
+  padding-left: 52px;
+  overflow-y: hidden;
+  margin-top: -89px;
+  z-index: 5;
+  background-color: white;
+  margin-left: 13%;
+}
+.text-deco{
+  border-bottom: 0px !important;
+}
+.ban-img{
+  width: 238px;
+  display: inline-block;
+}
+.ban-body{
+  width:100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.list-name{
+  font-size:10px;
+  color:red;
+  z-index: 100;
+}
+
+.ban-pos{
+  height: 21%;
+  width: 17%;
+}
