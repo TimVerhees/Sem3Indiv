@@ -1,44 +1,47 @@
 import React, { useState } from 'react';
-import http from "../http-common";
-import styled from "styled-components";
 import '../style.css'
-import TestCard1 from '../images/TestCard.png'
 
 const URL = '//localhost:8080/home'
 
 function Home(){
 
-    //var carder = document.querySelector(".carder");
-    function CarderClick(){
-        document.querySelector("body").classList.toggle("active")
+    function TextInputU(e){
+        return(
+            document.getElementById("UsernameLabel").innerHTML = "Username"
+        )
     }
-
+    function TextInputP(e){
+        return(
+            document.getElementById("PasswordLabel").innerHTML = "Password"
+        )
+    }
+    function LogInput(){
+        var x = document.getElementById("userTextbox").value
+        var z = document.getElementById("passTextbox").value
+        console.log(x)
+        console.log(z)
+    }
     return (
         <html>
-        <header>
-            <div>
-                This is the home page!
-
-            </div>
-            <div class="section">
-                <div >
-                    <a href="#" onClick={CarderClick}>Click me!</a>
-                </div>
-            </div>
-        </header>
-
         <body>
-            <div class="wrapper">
-                <div class="sidebar">
-                    <div class="cd-img">
-                        <img src={TestCard1}></img>
-                        <h1>Test Card</h1>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div className="scroll-hide">
+                <div class="home-wrap">
+                    <div className="login-wrap">
+                        <h1>LOGIN</h1>
+                        <div className="input-contain">
+                            <p id="UsernameLabel" className="input-label user-label"></p>
+                            <input className="input-wrap input-user" placeholder="Username" id="userTextbox" onInput={TextInputU}></input>
+                            <p id="PasswordLabel" className="input-label pass-label"></p>
+                            <input type="password" className="input-wrap input-pass" placeholder="Password" id="passTextbox" onInput={TextInputP}></input>
+                            
+                        </div>
+                        <a href="#" className="login-btn" onClick={LogInput}>Log input</a>
                     </div>
                 </div>
             </div>
-
         </body>
+        
+       
         </html>
     )
 }
