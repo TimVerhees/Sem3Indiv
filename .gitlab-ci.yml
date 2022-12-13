@@ -16,6 +16,13 @@ test:
    - ./gradlew test
    - ./gradlew.bat --stop
 
-after script:
+sonarqube-check:
+  stage: sonarqube
   script:
-    - echo "End of ci"
+    -cd JavaProject\Sem3Individual
+    -./gradlew sonarqube -D'sonar.qualitygate.wait=true'
+    -./gradlew.bat --stop
+  allow_failure: true
+  only:
+    -master
+    -merge_request
