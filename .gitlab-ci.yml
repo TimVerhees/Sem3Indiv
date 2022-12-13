@@ -19,10 +19,10 @@ test:
 sonarqube-check:
   stage: sonarqube
   script:
-    -cd JavaProject\Sem3Individual
-    -./gradlew sonarqube -D'sonar.qualitygate.wait=true'
-    -./gradlew.bat --stop
+    - cd JavaProject\Sem3Individual
+    - ./gradlew sonarqube -D'sonar.qualitygate.wait=true'
+    - ./gradlew.bat --stop
   allow_failure: true
   only:
-    -master
-    -merge_request
+    - master
+    - merge_request
