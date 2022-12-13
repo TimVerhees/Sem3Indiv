@@ -1,15 +1,12 @@
 import axios from 'axios';
-import Axios from 'axios';
-import React, { useState } from 'react';
-import http from "../../http-common";
-import styled from "styled-components";
+import React, { useImperativeHandle, useState } from 'react';
 import '../../style.css'
-import TestCard1 from '../../images/TestCard.png'
 
 const URL = '//localhost:8080/cards'
-
-const cardDesc = "";
+var cdimg = "../../images/TestCard.png";
 function Cards(){
+  const [cardimg, setCardimg] = useState();
+  const [imgsrc, setImgsrc] = useState();
   const [cards, setCard] = useState([]);
     React.useEffect(() => {
     axios.get(URL).then((response) => {
@@ -24,6 +21,7 @@ function Cards(){
   const [clvl, setClvl] = useState([]);
   const [crace, setCrace] = useState([]);
   const [cattribute, setCattribute] = useState([]);
+  
   function CarderClick(e){
     document.querySelector("body").classList.toggle("active")
     setTimeout(() => axios.get(URL+"/"+ e.target.id).then(res => {
@@ -34,7 +32,16 @@ function Cards(){
       setClvl(res.data.level)
       setCattribute(res.data.attribute)
       setCrace(res.data.race)
+      
     }), 500) 
+  }
+
+  function imgUpdater(card){
+    console.log(card.card_image)
+    if (card.card_image != null){
+      const cdimg = card.card_image
+    }
+    else {cdimg = "../../images/TestCard.png"}
   }
 
   function postOnClick(){
@@ -53,16 +60,6 @@ function Cards(){
     window.location.reload(false);
   }
   
-  function wrapperFunction() {
-    postOnClick()
-    .then(pageReload)
-  }
-
-  function wrapperFunction2() {
-    deleteOnClick()
-    .then(pageReload)
-  }
-
   function updateOnClick(){
     axios
         .put(`${URL}/3`,{
@@ -81,14 +78,21 @@ function Cards(){
         })
   }
 
+  function getCardImg(){
+    axios
+        .get(`//localhost:8080/cardimages/${cname}`)
+        .then((resp) => 
+        resp.data.data.map((cdimgarr) => console.log(cdimgarr.card_images[0].image_url)))
+  }
+
   if (!cards) return null;
   return (
     <div>
     <body>
       <div class="wrapper">
                 <div class="sidebar">
-                    <div class="cd-img">
-                        <img src={TestCard1} ></img>
+                    <div  class="cd-img">
+                        <img src={require(`../../images/TestCard.png`)} ></img>
                           <h2 >{cname}</h2>
                           <div class="desc-box detail-txt">
                            <p>Description: {cdesc}</p> 
@@ -96,7 +100,7 @@ function Cards(){
                            <p>Level: {clvl} </p>
                            <p>Race: {crace} Attribute: {cattribute}</p>
                           </div>
-                          
+                          <a href="#" onClick={getCardImg}> Test</a>
                     </div>
                 </div>
             </div>
@@ -105,14 +109,13 @@ function Cards(){
     <div class="body-positioner">
       <div class="wrap">
         {cards.map((card, key) => (
-          <div  class="card-align w3-card-2 w3-container">
-                  <img onClick={CarderClick} key={card.id} id={card.id} src={TestCard1} class="card-sizing" href="#"></img>
-                <p class="txt-middle">{card.name}</p>
-          </div>
-      ))}
-      <p><button onClick={wrapperFunction}>Post Pot of Greed</button></p>
+          
+          <div class="card-align w3-card-2 w3-container">
+            <img onClick={CarderClick} key={card.id} id={card.id} src={require("../../images/TestCard.png")} class="card-sizing" href="#"></img>
+          <p class="txt-middle">{card.name}</p>
+        </div>))
+        }
       <div><p><button onClick={updateOnClick}>Update to Pot of Duality</button></p></div>
-      <div><p><button onClick={wrapperFunction2}>Delete the third card</button></p></div>
       <div><p><button onClick={pageReload}>Reload page</button></p></div>
       </div>
       </div>

@@ -25,7 +25,7 @@ public class BanlistController {
     @CrossOrigin("http://localhost:3000")
     @GetMapping
     public ResponseEntity<GetBanlistsResponse> getBanlists() {
-        return ResponseEntity.ok(getBanlistsUseCase.    getBanlists());
+        return ResponseEntity.ok(getBanlistsUseCase.getBanlists());
     }
 
     @CrossOrigin

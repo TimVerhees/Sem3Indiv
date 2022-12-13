@@ -25,6 +25,7 @@ public class CardConvertor {
                 .attribute(cardEntity.getAttribute())
                 .link(cardEntity.getLink())
                 .ogbanlist(cardEntity.getOgbanlist())
+                .card_image(cardEntity.getCard_image())
                 .build();
     }
 

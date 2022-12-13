@@ -146,7 +146,7 @@ p{
 }
 
 h1{
-    height: -moz-fit-content;
+
     height: fit-content;
     position: absolute;
     font-family: "Hertical Serif Demo";
@@ -235,4 +235,23 @@ h1{
 
 .scroll-hide{
     overflow-y: hidden;
+}
+
+.logged_intxt{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 15;
+}
+
+.succes-pos{
+    display: none;
+    position: absolute;
+    justify-content: center !important;
+    align-items: center;
+    z-index: 15;
+    width: 50%;
+    font-size: 50px;
+    height: 80%;
+    margin-top: 150px;
 }

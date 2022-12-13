@@ -18,4 +18,5 @@ public class Card {
     private String attribute;
     private int link;
     private String ogbanlist;
+    private String card_image;
 }

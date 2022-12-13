@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface GetCardUseCase {
     Optional<Card> getCard(long cardId);
+    String getCardName(String cardName);
 }

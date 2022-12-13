@@ -1,8 +1,9 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import '../style.css'
 
-const URL = '//localhost:8080/home'
-
+const URL = '//localhost:8080/login'
+let accesstoken = "";
 function Home(){
 
     function TextInputU(e){
@@ -18,16 +19,34 @@ function Home(){
     function LogInput(){
         var x = document.getElementById("userTextbox").value
         var z = document.getElementById("passTextbox").value
-        console.log(x)
-        console.log(z)
+        var element = document.getElementById("login_box")
+        axios
+            .post(URL,{
+            username: `${x}`,
+            password: `${z}`
+        }).then((response) => {
+            accesstoken = response.data.accessToken
+            element.setAttribute("style", "display: none !important")
+            document.getElementById("loginsucces").setAttribute("style","display: flex !important")
+            localStorage.setItem("accesstoken", accesstoken)
+            var parsedtoken = JSON.parse(window.atob(localStorage.getItem("accesstoken").split('.')[1]))
+            console.log(parsedtoken)
+            
+            })
+            .catch(error => {
+                alert("Login Failed!")
+            })
     }
+
     return (
         <html>
         <body>
+        <h3 id="loginsucces" className="succes-pos">Login succes!</h3>
             <div className="scroll-hide">
                 <div class="home-wrap">
-                    <div className="login-wrap">
+                    <div id ="login_box"className="login-wrap">
                         <h1>LOGIN</h1>
+                        
                         <div className="input-contain">
                             <p id="UsernameLabel" className="input-label user-label"></p>
                             <input className="input-wrap input-user" placeholder="Username" id="userTextbox" onInput={TextInputU}></input>

@@ -47,6 +47,8 @@ public class CardEntity {
     private int link;
     @Column (name = "ogbanlist")
     private String ogbanlist;
+    @Column (name = "card_image")
+    private String card_image;
     /*OneToMany (mappedBy = "card")
     private List<BanlistItemEntity> banlistitems;*/
     //USE JACOCO FOR SONAR

@@ -1,6 +1,7 @@
 package sem3indiv.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import sem3indiv.domain.Card;
 import sem3indiv.repository.entity.CardEntity;
 
 import java.util.List;
@@ -13,8 +14,10 @@ public interface CardRepository  extends JpaRepository<CardEntity, Long> {
 
     //CardEntity findById(long cardId);
 
-    boolean existsByName(String name);
+    //boolean existsByName(String name);
+    Optional<CardEntity> findByName(String name);
 
+    boolean existsByName(String cardName);
     //CardEntity save(CardEntity card);
 
     //List<CardEntity> findAll();
