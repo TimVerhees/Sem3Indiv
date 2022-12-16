@@ -3,7 +3,10 @@ import React, { useImperativeHandle, useState } from 'react';
 import '../../style.css'
 
 const URL = '//localhost:8080/cards'
-var cdimg = "../../images/TestCard.png";
+var cdimg = "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671194611/El%20Shaddoll%20Construct.jpg";
+let foundImg = '';
+
+
 function Cards(){
   const [cardimg, setCardimg] = useState();
   const [imgsrc, setImgsrc] = useState();
@@ -21,10 +24,14 @@ function Cards(){
   const [clvl, setClvl] = useState([]);
   const [crace, setCrace] = useState([]);
   const [cattribute, setCattribute] = useState([]);
+  const [cimage, SetCimage] = useState();
+  const [cid, SetCid] = useState();
   
   function CarderClick(e){
+    document.getElementById("imgWarning").setAttribute("style", "display: none")
     document.querySelector("body").classList.toggle("active")
     setTimeout(() => axios.get(URL+"/"+ e.target.id).then(res => {
+      SetCid(res.data.id)
       setCdesc(res.data.desc)
       setCname(res.data.name)
       setCatk(res.data.atk)
@@ -32,7 +39,13 @@ function Cards(){
       setClvl(res.data.level)
       setCattribute(res.data.attribute)
       setCrace(res.data.race)
-      
+      SetCimage(res.data.card_image)
+      if(res.data.card_image === "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671196663/TestCard_hhqo2l.png"){
+        document.getElementById("requestBtn").setAttribute("style", "display: table")
+      }
+      else{
+        document.getElementById("requestBtn").setAttribute("style", "display: none")
+      }
     }), 500) 
   }
 
@@ -78,12 +91,23 @@ function Cards(){
         })
   }
 
-  function getCardImg(){
-    axios
-        .get(`//localhost:8080/cardimages/${cname}`)
-        .then((resp) => 
-        resp.data.data.map((cdimgarr) => console.log(cdimgarr.card_images[0].image_url)))
+ async function getCardImg(){
+    await axios.get(`//localhost:8080/cardimages/${cname}`)
+        .then(async (resp) => {
+          resp.data.data.map((cdimgarr) => {
+            console.log(cdimgarr.card_images[0].image_url)
+            foundImg = cdimgarr.card_images[0].image_url})
+            console.log(cname)
+            console.log(foundImg)
+            await axios.put(`//localhost:8080/cardimages/updateImage/${cid}`,{
+                    card_image: foundImg,  
+                    name: cname
+                  }
+            )}).catch((e) => {
+              document.getElementById("imgWarning").setAttribute("style", "display: flex")
+            })
   }
+        
 
   if (!cards) return null;
   return (
@@ -91,8 +115,8 @@ function Cards(){
     <body>
       <div class="wrapper">
                 <div class="sidebar">
-                    <div  class="cd-img">
-                        <img src={require(`../../images/TestCard.png`)} ></img>
+                    <div class="cd-img">
+                        <img src={cimage} ></img>
                           <h2 >{cname}</h2>
                           <div class="desc-box detail-txt">
                            <p>Description: {cdesc}</p> 
@@ -100,7 +124,11 @@ function Cards(){
                            <p>Level: {clvl} </p>
                            <p>Race: {crace} Attribute: {cattribute}</p>
                           </div>
-                          <a href="#" onClick={getCardImg}> Test</a>
+                          
+                    </div>
+                    <p id="imgWarning" className="image-warning">No image found for this card's name!</p>
+                    <div className="request-positioner">
+                      <button id="requestBtn" className="request-btn" onClick={getCardImg}>Request image</button>
                     </div>
                 </div>
             </div>
@@ -111,7 +139,7 @@ function Cards(){
         {cards.map((card, key) => (
           
           <div class="card-align w3-card-2 w3-container">
-            <img onClick={CarderClick} key={card.id} id={card.id} src={require("../../images/TestCard.png")} class="card-sizing" href="#"></img>
+            <img onClick={CarderClick} key={card.id} id={card.id} src={card.card_image} class="card-sizing" href="#"></img>
           <p class="txt-middle">{card.name}</p>
         </div>))
         }
@@ -125,7 +153,7 @@ function Cards(){
   );
   
 
-      }
+}
     
     
 export default Cards;

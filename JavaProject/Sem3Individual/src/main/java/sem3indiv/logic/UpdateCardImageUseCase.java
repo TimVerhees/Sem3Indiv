@@ -1,2 +1,7 @@
-package sem3indiv.logic;public interface UpdateCardImageUseCase {
+package sem3indiv.logic;
+
+import sem3indiv.domain.UpdateCardImageRequest;
+
+public interface UpdateCardImageUseCase {
+    void updateCardImage(UpdateCardImageRequest request);
 }

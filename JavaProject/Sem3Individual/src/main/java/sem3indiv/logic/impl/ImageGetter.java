@@ -1,33 +1,32 @@
 package sem3indiv.logic.impl;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Map;
+
+import com.cloudinary.*;
+import com.cloudinary.utils.ObjectUtils;
 
 public class ImageGetter {
-    public static void main(String[] args) throws Exception {
-        String imageUrl = "https://images.ygoprodeck.com/images/cards/72302403.jpg";
-        String destinationFile = "C:\\Users\\timve\\Desktop\\Fontys\\Sem3\\Individuele opdracht\\git\\front-end-indiv-app\\src\\images\\Swords of Revealing Light.jpg";
 
-        saveImage(imageUrl, destinationFile);
-    }
+    public static Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
+            "cloud_name", "dz6wz2wfd",
+            "api_key", "417581682995282",
+            "api_secret", "M2bMr5MPcG7WXzqsFPJii-lr-oo"));
 
-    public static void saveImage(String imageUrl, String destinationFile) throws IOException {
-        URL url = new URL(imageUrl);
-        InputStream is = url.openStream();
-        OutputStream os = new FileOutputStream(destinationFile);
-
-        byte[] b = new byte[2048];
-        int length;
-
-        while ((length = is.read(b)) != -1) {
-            os.write(b, 0, length);
+    public static void main(String[] args) {
+        String imageUrl = "https://images.ygoprodeck.com/images/cards/20366275.jpg";
+        String imageName = "El Shaddoll Construct";
+        String destinationFile = "C:\\Users\\timve\\Desktop\\Fontys\\Sem3\\Individuele opdracht\\git\\front-end-indiv-app\\src\\images\\" + imageName + ".jpg";
+        try {
+            UploadImage(imageUrl, imageName);
+        } catch (Exception e) {
+            System.out.println("Failed to get Image");
         }
-
-        is.close();
-        os.close();
     }
-
-
+        public static void UploadImage (String imageUrl, String imageName) throws IOException {
+            cloudinary.uploader().upload((imageUrl),
+                    ObjectUtils.asMap("public_id", imageName));
+        }
 
 }

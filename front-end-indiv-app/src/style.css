@@ -146,7 +146,6 @@ p{
 }
 
 h1{
-
     height: fit-content;
     position: absolute;
     font-family: "Hertical Serif Demo";
@@ -253,5 +252,33 @@ h1{
     width: 50%;
     font-size: 50px;
     height: 80%;
-    margin-top: 150px;
+}
+
+.request-btn{
+    display: none;
+    background-color: #b2591a;
+    border: none;
+    color:white;
+    font-family: "Hertical Serif Demo";
+    font-size: 30px;
+    justify-content: center;
+    width: 40%;
+    height: 22%;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+.request-positioner{
+    display: flex;
+    justify-content: center;
+    height: 30%;
+}
+
+.image-warning{
+    display:none;
+    justify-content: center;
+    position: absolute;
+    margin-top: -28px;
+    width: 100%;
+    color: red;
 }

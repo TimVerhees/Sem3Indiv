@@ -46,10 +46,10 @@ const Banlist = () =>{
                 <div className="ban-pos">
                   <p className="list-name">{cardlists.bantype}</p>
                 <div className="ban-img">
-                  <img src={TestCard1}></img>
+                  <img src={realcards.card_image}></img>
                   <p className="text-deco">{realcards.name}</p>
-                  
-                </div></div>)
+                </div>
+                </div>)
                 )))}
               </div>
           

@@ -1,0 +1,33 @@
+version: "3"
+services:
+  sem3yugiohfrontend:
+    build: ./front-end-indiv-app
+    ports:
+      - 3000:3000
+    depends_on:
+      - "sem3yugiohbackend"
+      
+  sem3yugiohbackend:
+    build: ./JavaProject/Sem3Individual
+    ports:
+      - 8080:8080
+    depends_on:
+      - "sem3yugiohdb"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123
+      SPRING_DATASOURCE_URL: jdbc:mysql://sem3yugiohdb:3306/sem3yugioh
+      
+  sem3yugiohdb:
+    container_name: sem3yugiohdb
+    ports:
+      - 3306:3306
+    image: mysql:latest
+    volumes:
+        - yugioh:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: sem3yugioh
+    
+volumes:
+    yugioh:
