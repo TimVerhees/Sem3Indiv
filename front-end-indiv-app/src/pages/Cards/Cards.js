@@ -135,6 +135,9 @@ function Cards(){
         </body>
     
     <div class="body-positioner">
+      <div className="btn-centerer">
+      <a href="/createcard" id="createBtn" className="submit-btn btn-pos">Create Card</a>
+      </div>
       <div class="wrap">
         {cards.map((card, key) => (
           

@@ -50,11 +50,11 @@
     flex-flow: row wrap;
     display: flex;
     height: 100%;
-    padding-top: 150px;
+    padding-top: 200px;
     box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
     padding-left: 52px;
     overflow-y: hidden;
-    margin-top: -89px;
+    margin-top: -190px;
     z-index: 5;
     background-color: white;
 }
@@ -78,9 +78,11 @@
     min-height: 86.9vh;
 }
 
-
 body {
     background-image: url(images/yugibg.png);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     background-color: white;
     z-index: 0;
 }
@@ -267,7 +269,20 @@ h1{
     vertical-align: middle;
     border-radius: 5px;
 }
-
+.submit-btn{
+    display: flex;
+    background-color: #b2591a;
+    border: none;
+    color:white;
+    font-family: "Hertical Serif Demo";
+    font-size: 30px;
+    justify-content: center;
+    width: 20%;
+    height: 6%;
+    vertical-align: middle;
+    border-radius: 5px;
+    text-decoration: none;
+}
 .request-positioner{
     display: flex;
     justify-content: center;
@@ -281,4 +296,126 @@ h1{
     margin-top: -28px;
     width: 100%;
     color: red;
+}
+.header-pos{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-left: -40px;
+    margin-top: 13px;
+}
+.create-txt{
+    display: flex;
+    height: 65px;
+    width: 60%;
+    margin-bottom: 20px;
+    font-size: 25px
+}
+.desc-sizer{
+    height: 225px !important;
+    vertical-align: top;
+    text-align: left;
+    font-size: 14px !important;
+}
+.create-txt:focus{
+    outline: none !important;
+}
+.create-wrap{
+    width: 71.5%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 150px;
+    box-shadow: 5px 0 5px -5px rgba(0,0,0,0.7), -5px 0 5px -5px rgba(0,0,0,0.7);
+    overflow-y: hidden;
+    margin-top: -89px;
+    z-index: 5;
+    background-color: white;
+    position: absolute;
+    justify-content: center;
+    margin-left: 43px;
+    height: 90.3%;
+}
+
+.input-contain{
+    display:flex;
+    width:50%;
+    justify-content: center;
+}
+
+.input-create-contain{
+    display:flex;
+    flex-direction: column;
+    width:50%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.create-select{
+    display: flex;
+    height: 55px;
+    width: 29%;
+    background-color: white;
+    
+}
+.create-select:focus{
+    background-color: white;
+}
+.create-select-type{
+    margin-right: 10px;
+}
+.placeholder-txt{
+    color: #bababa;
+}
+.select-align{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:fit-content;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.atk-def-align{
+    display: flex;
+    flex-direction: row;
+    width: 59%;
+    height:fit-content;
+    justify-content: flex-start;
+    margin-bottom: 35px;
+}
+.atk-def-txt{
+    height:100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.optional-laberer{
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    margin-top: 75px;
+    margin-left: 95px;
+    color: red;
+}
+.btn-pos{
+    margin-top: 110px;
+    width: 12% !important;
+    height: 25% !important;
+}
+.btn-centerer{
+    display: flex;
+    justify-content: center;
+    height:200px;
+    margin-top: -20px;
+}
+textarea {
+    resize: none;
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  }
+label{
+    height:fit-content;
+    margin-top: 0px;
+}
+.ban-select{
+    width:61% !important;
 }

@@ -33,6 +33,7 @@ public class CreateCardUseCaseImpl implements CreateCardUseCase {
                 .attribute(request.getAttribute())
                 .link(request.getLink())
                 .ogbanlist(request.getOgbanlist())
+                .card_image(request.getCard_image())
                 .build();
 
         CardEntity savedCard = saveNewCard(newCard);
@@ -49,7 +50,6 @@ public class CreateCardUseCaseImpl implements CreateCardUseCase {
     }
 
     private boolean existsByName(String cardName) {
-        // TODO: replace by countryRepository correct method call and return
         return (cardRepository.existsByName(cardName));
 
     }

@@ -54,7 +54,7 @@ function Home(){
                             <input type="password" className="input-wrap input-pass" placeholder="Password" id="passTextbox" onInput={TextInputP}></input>
                             
                         </div>
-                        <a href="#" className="login-btn" onClick={LogInput}>Log input</a>
+                        <a href="#" className="login-btn" onClick={LogInput}>Login</a>
                     </div>
                 </div>
             </div>

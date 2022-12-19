@@ -6,6 +6,7 @@ import Card from "./pages/Cards/Cards"
 import Banlist from "./pages/Banlists/Banlist"
 import Home from "./pages/Home"
 import {Layout} from "./components/Layout"
+import CreateCard from './pages/Cards/CreateCard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path='/cards' exact element={<Card />} />
           <Route path='/banlist' element={<Banlist />} />
+          <Route path='/createcard' element={<CreateCard />} />
         </Routes>
       </Router>
     </Layout>
