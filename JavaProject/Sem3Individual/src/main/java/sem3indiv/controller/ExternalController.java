@@ -48,7 +48,7 @@ public class ExternalController {
                     ObjectUtils.asMap("public_id", request.getName()));
             request.setCard_image((String) uploadResult.get("secure_url"));
         }catch (Exception e) {
-            System.out.println("Failed");
+            System.out.println("Failed to upload image");
             return ResponseEntity.notFound().build();
         }
         updateCardImageUseCase.updateCardImage(request);

@@ -419,3 +419,14 @@ label{
 .ban-select{
     width:61% !important;
 }
+.wrap-pos{
+    width:100%;
+    height:800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signup-pos{
+    margin-top: 285px;
+}

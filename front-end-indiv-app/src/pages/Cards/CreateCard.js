@@ -4,16 +4,6 @@ import axios from 'axios';
 function CreateCard(){
 
     function handleSubmit(){
-        console.log(document.getElementById("cardName").value)
-        console.log(document.getElementById("cardDesc").value)
-        console.log(document.getElementById("selectType").value)
-        console.log(document.getElementById("selectAttribute").value)
-        console.log(document.getElementById("atk").value)
-        console.log(document.getElementById("def").value)
-        console.log(document.getElementById("level").value)
-        console.log(document.getElementById("link").value)
-        console.log(document.getElementById("cardRace").value)
-        console.log(document.getElementById("ogban").value)
         axios
             .post("//localhost:8080/cards", {
             name: document.getElementById("cardName").value,
@@ -43,8 +33,8 @@ function CreateCard(){
                             <option>Spell Card</option>
                             <option>Trap Card</option>
                         </select>
-                        <select className="create-select">
-                            <option id="selectAttribute"className="placeholder-txt" disabled selected>Select Attribute...</option>
+                        <select id="selectAttribute" className="create-select">
+                            <option className="placeholder-txt" disabled selected>Select Attribute...</option>
                             <option>None</option>
                             <option>Earth</option>
                             <option>Dark</option>
