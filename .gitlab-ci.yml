@@ -27,3 +27,10 @@ sonarqube-check:
   only:
     - master
     - merge_request
+docker-compose:
+  stage: docker
+  script:
+    - docker compose up
+  only:
+    - master
+    - merge_request
