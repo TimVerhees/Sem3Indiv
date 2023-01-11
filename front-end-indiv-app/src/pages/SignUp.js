@@ -30,7 +30,8 @@ function SignUp(){
         }).then(
             element.setAttribute("style", "display: none !important"),
             document.getElementById("loginsucces").setAttribute("style","display: flex !important"),
-            navigate("/")
+            setTimeout(()=>{
+            navigate("/")}, 3000)
         ).catch(error => {
             alert("Invalid sign up!")
         })
@@ -39,7 +40,7 @@ function SignUp(){
     return (
         <html>
         <body>
-        <h3 id="loginsucces" className="succes-pos">Sign up succes!</h3>
+        <h3 id="loginsucces" className="succes-pos">Sign up succes! Redirecting...</h3>
             <div className="scroll-hide">
                 <div class="home-wrap">
                     <div id ="login_box"className="login-wrap">

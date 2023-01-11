@@ -18,7 +18,7 @@ public class UsersController {
     private final GetUsersUseCase getUsersUseCase;
     private final CreateUserUseCase createUserUseCase;
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000")
     @GetMapping
     public ResponseEntity<GetUsersResponse> getUsers() {
         return ResponseEntity.ok(getUsersUseCase.getUsers());

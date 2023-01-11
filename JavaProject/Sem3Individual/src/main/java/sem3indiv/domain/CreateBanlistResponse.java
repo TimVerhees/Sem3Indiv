@@ -7,4 +7,5 @@ import lombok.Data;
 @Builder
 public class CreateBanlistResponse {
     private Long banlistId;
+    private String name;
 }

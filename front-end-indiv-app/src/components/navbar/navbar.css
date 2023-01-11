@@ -164,3 +164,7 @@ box-shadow: 0 0.5rem 1.1rem rgba(0, 0, 0, 10%);
 .li{
     display: inline;
 }
+.logout-pos{
+    margin-left: 240px;
+    position: absolute;
+}

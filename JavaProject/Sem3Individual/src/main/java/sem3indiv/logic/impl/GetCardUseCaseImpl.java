@@ -5,6 +5,7 @@ import sem3indiv.logic.GetCardUseCase;
 import sem3indiv.repository.CardRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import sem3indiv.repository.entity.CardEntity;
 
 import java.util.Optional;
 
@@ -21,11 +22,13 @@ public class GetCardUseCaseImpl implements GetCardUseCase {
 
     @Override
     public String getCardName(String cardName) {
-        Optional<Card> temp = cardRepository.findByName(cardName).map(CardConvertor::convert);
-        if (temp.isEmpty()) {
+
+        Optional<CardEntity> tempCard = cardRepository.findByName(cardName);
+        if (tempCard.isEmpty()) {
             return null;
         }
-        Card card = temp.get();
+
+        Card card = CardConvertor.convert(tempCard.get());
         String name = card.getName();
         return name;
     }

@@ -23,10 +23,15 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - sem3yugiohdb
+      - "sem3yugiohdb"
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 333lollpop
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url": "jdbc:mysql://sem3yugiohdb:3306/sem3yugioh?enabledTLSProtocols=TLSv1.2",
+        "spring.datasource.username": "root",
+        "spring.datasource.password": "333lollpop",
+        "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL8Dialect",
+        "spring.jpa.hibernate.ddl-auto": "update"
+        }'
     
 volumes:
     yugioh:

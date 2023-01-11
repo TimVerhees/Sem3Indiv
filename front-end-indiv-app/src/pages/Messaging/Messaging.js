@@ -54,14 +54,30 @@ function Messaging() {
       onMessageReceived(data);
     });
   }
-
+  var chatbox = document.querySelector(".chat-window")
+  var arrow = document.getElementById("chatboxarrow")
+  function windowClick(){
+    
+    if(arrow.style.transform == "rotate(180deg)"){
+        console.log("reached")
+        arrow.setAttribute("style", "transform: rotate(0)");
+        chatbox.style.bottom = "-250px";
+    }else{
+        arrow.setAttribute("style", "transform: rotate(180deg)");
+        chatbox.style.bottom = "0px";
+    }
+    
+  }
   return (
-    <div className="App wrap-pos">
-      <UsernamePlaceholder username={username} onUsernameInformed={onUsernameInformed} />
-      <br></br>
-      <SendMessagePlaceholder username={username} onMessageSend={sendMessage} />
-      <br></br>
-      <ChatMessagesPlaceholder username={username} messagesReceived={messagesReceived} />
+    <div className="chat-window">
+        <i id="chatboxarrow" onClick={windowClick} class="fa-solid fa-chevron-down fa-2x icon-arrowd-pos"></i>
+        <div className="App wrap-pos">
+        <UsernamePlaceholder username={username} onUsernameInformed={onUsernameInformed} />
+        <br></br>
+        <SendMessagePlaceholder username={username} onMessageSend={sendMessage} />
+        <br></br>
+        <ChatMessagesPlaceholder username={username} messagesReceived={messagesReceived} />
+        </div>
     </div>
   );
 

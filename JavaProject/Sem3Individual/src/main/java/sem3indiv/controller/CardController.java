@@ -21,13 +21,13 @@ public class CardController {
     private final UpdateCardUseCase updateCardUseCase;
     private final DeleteCardUseCase deleteCardUseCase;
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000")
     @GetMapping
     public ResponseEntity<GetCardsResponse> getCards() {
         return ResponseEntity.ok(getCardsUseCase.getCards());
     }
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("{id}")
     public ResponseEntity<Card> getCard(@PathVariable(value = "id") final long id) {
         final Optional<Card> cardOptional = getCardUseCase.getCard(id);

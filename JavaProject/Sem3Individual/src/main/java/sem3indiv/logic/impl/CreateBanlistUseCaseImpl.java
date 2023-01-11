@@ -31,16 +31,13 @@ public class CreateBanlistUseCaseImpl  implements CreateBanlistUseCase {
 
         return CreateBanlistResponse.builder()
                 .banlistId(savedBanlist.getId())
+                .name(savedBanlist.getName())
                 .build();
     }
 
     private BanlistEntity saveNewBanlist(BanlistEntity banlist) {
 
-        banlistRepository.save((banlist));
-        return BanlistEntity.builder().build();
+        return banlistRepository.save((banlist));
     }
 
-    //private boolean existsByName(String cardName) {
-        // TODO: replace by countryRepository correct method call and return
-        //return (cardRepository.existsByName(cardName));
 }

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import * as ReactDOM from 'react-dom'
 import '../style.css'
 
 const URL = '//localhost:8080/login'
 let accesstoken = "";
 function Home(){
-
+    
     function TextInputU(e){
         return(
             document.getElementById("UsernameLabel").innerHTML = "Username"
@@ -30,23 +31,24 @@ function Home(){
             document.getElementById("loginsucces").setAttribute("style","display: flex !important")
             localStorage.setItem("accesstoken", accesstoken)
             var parsedtoken = JSON.parse(window.atob(localStorage.getItem("accesstoken").split('.')[1]))
-            console.log(parsedtoken)
-            
+            window.location.reload()
             })
             .catch(error => {
                 alert("Login Failed!")
             })
     }
 
-    return (
+    return( 
         <html>
         <body>
         <h3 id="loginsucces" className="succes-pos">Login succes!</h3>
             <div className="scroll-hide">
                 <div class="home-wrap">
-                    <div id ="login_box"className="login-wrap">
+                    {localStorage.getItem("accesstoken") != null &&
+                <p className="loggedin-pos">Logged in!</p>}
+                {localStorage.getItem("accesstoken") == null &&
+                    <div id="login_box" className="login-wrap">
                         <h1>LOGIN</h1>
-                        
                         <div className="input-contain">
                             <p id="UsernameLabel" className="input-label user-label"></p>
                             <input className="input-wrap input-user" placeholder="Username" id="userTextbox" onInput={TextInputU}></input>
@@ -56,12 +58,10 @@ function Home(){
                         </div>
                         
                         <a href="#" className="login-btn" onClick={LogInput}>Login</a>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </body>
-        
-       
         </html>
     )
 }

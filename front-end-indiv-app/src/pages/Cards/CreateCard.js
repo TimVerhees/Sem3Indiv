@@ -1,6 +1,9 @@
 import { Dropdown } from "reactstrap";
 import '../../style.css'
 import axios from 'axios';
+
+const fallbackImage = "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671196663/TestCard_hhqo2l.png";
+
 function CreateCard(){
 
     function handleSubmit(){
@@ -16,7 +19,7 @@ function CreateCard(){
             link: document.getElementById("link").value,
             race: document.getElementById("cardRace").value,
             ogbanlist: document.getElementById("ogban").value,
-            card_image: "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671196663/TestCard_hhqo2l.png"
+            card_image: fallbackImage
             })
     }
 

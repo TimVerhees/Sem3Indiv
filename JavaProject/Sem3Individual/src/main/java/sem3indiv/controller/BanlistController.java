@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/banlists")
 @AllArgsConstructor
 public class BanlistController {
@@ -28,7 +28,7 @@ public class BanlistController {
         return ResponseEntity.ok(getBanlistsUseCase.getBanlists());
     }
 
-    @CrossOrigin
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("{id}")
     public ResponseEntity<Banlist> getBanlist(@PathVariable(value = "id") final long id) {
         final Optional<Banlist> banlistOptional = getBanlistUseCase.getBanlist(id);
