@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DatabaseDataInitializer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sem3Individual</a> &gt; <a href="index.source.html" class="el_package">sem3indiv.config.db</a> &gt; <span class="el_source">DatabaseDataInitializer.java</span></div><h1>DatabaseDataInitializer.java</h1><pre class="source lang-java linenums">package sem3indiv.config.db;
+
+//import sem3indiv.repository.impl.FakeCardRepositoryImpl;
+import lombok.*;
+import sem3indiv.repository.entity.CardEntity;
+
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+@Component
+<span class="nc" id="L12">@AllArgsConstructor</span>
+public class DatabaseDataInitializer{
+
+    /*private FakeCardRepositoryImpl cardRepository;
+    //private UserRepository userRepository;
+    @EventListener(ApplicationReadyEvent.class)
+    public void populateDatabaseInitialDummyData() {
+        if (cardRepository.count() == 0) {
+            cardRepository.save(CardEntity.builder().name(&quot;Testcard&quot;).type(&quot;Normal Monster&quot;).desc(&quot;This is a test card.&quot;)
+                    .atk(500).def(250).level(3).race(&quot;Insect&quot;).attribute(&quot;EARTH&quot;).ogbanlist(&quot;TCG&quot;).build());
+            cardRepository.save(CardEntity.builder().name(&quot;Dark Magician&quot;).type(&quot;Normal Monster&quot;).desc(&quot;The ultimate wizard in terms of attack and defense.&quot;)
+                    .atk(2500).def(2100).level(7).race(&quot;Spellcaster&quot;).attribute(&quot;DARK&quot;).build());
+
+        }
+        /*if (userRepository.count() == 0){
+            userRepository.save(UserEntity.builder().type(&quot;User&quot;).name(&quot;Timmy-boy&quot;).username(&quot;timmyboy1999&quot;).password(&quot;YuJin1965Tr1ck&quot;).build());
+            userRepository.save(UserEntity.builder().type(&quot;Admin&quot;).name(&quot;Valky&quot;).username(&quot;SirValky1999&quot;).password(&quot;B00l3an558&quot;).build());
+        }*/
+    }
+//}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

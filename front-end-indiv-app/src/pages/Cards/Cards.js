@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from '../../http-common';
 import React, { useImperativeHandle, useState } from 'react';
 import '../../style.css'
 
 const URL = '//localhost:8080/cards'
 var cdimg = "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671194611/El%20Shaddoll%20Construct.jpg";
 let foundImg = '';
-
+let parsedtoken = "";
 
 function Cards(){
   const [cardimg, setCardimg] = useState();
@@ -16,6 +16,10 @@ function Cards(){
       setCard(response.data.cards);
     });
   }, []);
+
+  React.useEffect(() => {
+    TokenParser()  
+  },[localStorage.getItem("accesstoken")]);
 
   const [cname, setCname] = useState([]);
   const [cdesc, setCdesc] = useState([]);
@@ -30,7 +34,7 @@ function Cards(){
   function CarderClick(e){
     document.getElementById("imgWarning").setAttribute("style", "display: none")
     document.querySelector("body").classList.toggle("active")
-    setTimeout(() => axios.get(URL+"/"+ e.target.id).then(res => {
+    setTimeout(() => axios.get("/cards/"+ e.target.id).then(res => {
       SetCid(res.data.id)
       setCdesc(res.data.desc)
       setCname(res.data.name)
@@ -48,58 +52,22 @@ function Cards(){
       }
     }), 500) 
   }
-
-  function imgUpdater(card){
-    console.log(card.card_image)
-    if (card.card_image != null){
-      const cdimg = card.card_image
+  function TokenParser(){
+    if(localStorage.getItem("accesstoken") != null){
+      parsedtoken = JSON.parse(window.atob(localStorage.getItem("accesstoken").split('.')[1]))
+      return parsedtoken}
     }
-    else {cdimg = "../../images/TestCard.png"}
-  }
-
-  function postOnClick(){
-    axios
-        .post(URL, {
-          name: "Pot of greed",
-          desc: "Draw 2 cards.",
-          type: "Spell Card."
-        })
-        .then((response) => {
-          setCard(response.data.cards);
-        });
-  }
-  
-  function pageReload(){
-    window.location.reload(false);
-  }
-  
-  function updateOnClick(){
-    axios
-        .put(`${URL}/3`,{
-          name:"Pot of Duality",
-          desc:"Excavate the top 3 cards of your Deck, add 1 of them to your hand, also, after that, shuffle the rest back into your Deck. You can only activate 1 \"Pot of Duality\" per turn. You cannot Special Summon during the turn you activate this card."
-        })
-        .then((response) => {
-          setCard(response.data.cards);
-        })
-  }
-  function deleteOnClick(){
-    axios
-        .delete(`${URL}/3`)
-        .then((response) => {
-          setCard(response.data.cards);
-        })
-  }
-
+  TokenParser()
+ 
  async function getCardImg(){
-    await axios.get(`//localhost:8080/cardimages/${cname}`)
+    await axios.get(`/cardimages/${cname}`)
         .then(async (resp) => {
           resp.data.data.map((cdimgarr) => {
             console.log(cdimgarr.card_images[0].image_url)
             foundImg = cdimgarr.card_images[0].image_url})
             console.log(cname)
             console.log(foundImg)
-            await axios.put(`//localhost:8080/cardimages/updateImage/${cid}`,{
+            await axios.put(`/cardimages/updateImage/${cid}`,{
                     card_image: foundImg,  
                     name: cname
                   }
@@ -107,7 +75,6 @@ function Cards(){
               document.getElementById("imgWarning").setAttribute("style", "display: flex")
             })
   }
-        
 
   if (!cards) return null;
   return (
@@ -135,9 +102,10 @@ function Cards(){
         </body>
     
     <div class="body-positioner">
+      {parsedtoken.Role == "Admin" &&
       <div className="btn-centerer">
       <a href="/createcard" id="createBtn" className="submit-btn btn-pos">Create Card</a>
-      </div>
+      </div>}
       <div class="wrap">
         {cards.map((card, key) => (
           
@@ -146,8 +114,6 @@ function Cards(){
           <p class="txt-middle">{card.name}</p>
         </div>))
         }
-      <div><p><button onClick={updateOnClick}>Update to Pot of Duality</button></p></div>
-      <div><p><button onClick={pageReload}>Reload page</button></p></div>
       </div>
       </div>
       </div>

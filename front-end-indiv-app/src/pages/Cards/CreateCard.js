@@ -1,14 +1,14 @@
 import { Dropdown } from "reactstrap";
 import '../../style.css'
-import axios from 'axios';
+import axios from '../../http-common';
 
 const fallbackImage = "https://res.cloudinary.com/dz6wz2wfd/image/upload/v1671196663/TestCard_hhqo2l.png";
 
 function CreateCard(){
-
+    
     function handleSubmit(){
         axios
-            .post("//localhost:8080/cards", {
+            .post("/cards", {
             name: document.getElementById("cardName").value,
             desc: document.getElementById("cardDesc").value,
             type: document.getElementById("selectType").value,

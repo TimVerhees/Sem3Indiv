@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreateUserUseCaseImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sem3Individual</a> &gt; <a href="index.source.html" class="el_package">sem3indiv.logic.impl</a> &gt; <span class="el_source">CreateUserUseCaseImpl.java</span></div><h1>CreateUserUseCaseImpl.java</h1><pre class="source lang-java linenums">package sem3indiv.logic.impl;
+
+import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import sem3indiv.domain.CreateCardRequest;
+import sem3indiv.domain.CreateCardResponse;
+import sem3indiv.domain.CreateUserRequest;
+import sem3indiv.domain.CreateUserResponse;
+import sem3indiv.logic.CreateCardUseCase;
+import sem3indiv.logic.CreateUserUseCase;
+import sem3indiv.logic.exception.NameAlreadyExistsException;
+import sem3indiv.repository.CardRepository;
+import sem3indiv.repository.UserRepository;
+import sem3indiv.repository.entity.CardEntity;
+import sem3indiv.repository.entity.UserEntity;
+
+@Service
+<span class="fc" id="L19">@AllArgsConstructor</span>
+public class CreateUserUseCaseImpl implements CreateUserUseCase {
+    private UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    @Override
+    public CreateUserResponse createUser(CreateUserRequest request) {
+
+
+<span class="fc" id="L27">        UserEntity savedUser = saveNewUser(request);</span>
+
+<span class="fc" id="L29">        return CreateUserResponse.builder()</span>
+<span class="fc" id="L30">                .userId(savedUser.getId())</span>
+<span class="fc" id="L31">                .build();</span>
+    }
+
+    private UserEntity saveNewUser(CreateUserRequest request) {
+<span class="fc" id="L35">        String encodedPassword = passwordEncoder.encode(request.getPassword());</span>
+
+<span class="fc" id="L37">        UserEntity newUser = UserEntity.builder()</span>
+<span class="fc" id="L38">                .username(request.getUsername())</span>
+<span class="fc" id="L39">                .password(encodedPassword)</span>
+<span class="fc" id="L40">                .type(request.getType())</span>
+<span class="fc" id="L41">                .build();</span>
+
+
+<span class="fc" id="L44">        return userRepository.save((newUser));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,5 +1,6 @@
 package sem3indiv.controller;
 
+import sem3indiv.config.security.isauthenticated.IsAuthenticated;
 import sem3indiv.domain.*;
 import sem3indiv.logic.*;
 import lombok.AllArgsConstructor;
@@ -7,11 +8,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("//localhost:3000")
 @RequestMapping("/cards")
 @AllArgsConstructor
 public class CardController {
@@ -36,8 +38,10 @@ public class CardController {
         }
         return ResponseEntity.ok().body(cardOptional.get());
     }
-
+    @IsAuthenticated
+    @RolesAllowed("ROLE_Admin")
     @PostMapping()
+    @CrossOrigin("http://localhost:3000")
     public ResponseEntity<CreateCardResponse> createCard(@RequestBody @Valid CreateCardRequest request) {
         CreateCardResponse response = createCardUseCase.createCard(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

@@ -6,10 +6,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
+import sem3indiv.config.security.isauthenticated.IsAuthenticated;
 import sem3indiv.domain.UpdateCardImageRequest;
 import sem3indiv.logic.GetCardUseCase;
 import sem3indiv.logic.UpdateCardImageUseCase;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.Map;
 
@@ -26,6 +28,8 @@ public class ExternalController {
     private final UpdateCardImageUseCase updateCardImageUseCase;
     @CrossOrigin("http://localhost:3000")
     @GetMapping("{name}")
+    @IsAuthenticated
+    @RolesAllowed("ROLE_Admin")
     public String getCardExternal(@PathVariable(value = "name") String name){
         String url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?name=" + name;
         RestTemplate restTemplate = new RestTemplate();
@@ -35,6 +39,8 @@ public class ExternalController {
 
     @CrossOrigin("http://localhost:3000")
     @PutMapping("updateImage/{id}")
+    @IsAuthenticated
+    @RolesAllowed("ROLE_Admin")
     public ResponseEntity<Void> updateCardImage(@PathVariable("id") long cardId,
                                                  @RequestBody @Valid UpdateCardImageRequest request) {
         request.setId(cardId);
