@@ -20,7 +20,8 @@ function CreateCard(){
             race: document.getElementById("cardRace").value,
             ogbanlist: document.getElementById("ogban").value,
             card_image: fallbackImage
-            })
+            }).then(
+                setTimeout(()=>window.location.replace("http://localhost:3000/cards"), 1000))
     }
 
     return(

@@ -110,7 +110,8 @@ function Cards(){
             await axios.put(`/cardimages/updateImage/${cid}`,{
                     card_image: foundImg,  
                     name: cname
-                  }
+                  },
+                  setTimeout(window.location.reload.bind(window.location), 1000)
             ).then(window.location.reload)}).catch((e) => {
               document.getElementById("imgWarning").setAttribute("style", "display: flex")
             })
