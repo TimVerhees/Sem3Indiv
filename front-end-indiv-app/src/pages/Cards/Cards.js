@@ -60,7 +60,45 @@ function Cards(){
   TokenParser()
  function pencilClick(){
   document.getElementById("editbox").setAttribute("style", "display: flex")
+  document.getElementById("cardnameside").setAttribute("style", "display: none")
+  document.getElementById("checkicon").setAttribute("style", "display: flex !important")
+  document.getElementById("xicon").setAttribute("style", "display: flex !important")
  }
+ function handleCheckClick(){
+  console.log(document.getElementById("editbox").value)
+  console.log(cid)
+    axios
+        .put(`/cards/${cid}`,{
+          name: document.getElementById("editbox").value
+        }).then(
+          document.getElementById("editbox").setAttribute("style", "display: none"),
+          document.getElementById("checkicon").setAttribute("style", "display: none !important"),
+          document.getElementById("xicon").setAttribute("style", "display: none !important"),
+          document.getElementById("cardnameside").setAttribute("style", "display: flex"),
+          setCname(document.getElementById("editbox").value)
+        ).catch((e) => {
+          window.alert("Bruh")
+        }) 
+  }
+  
+  function handleDelete(){
+    let confirm = window.confirm("Are you sure you want to delete this card?")
+    if (confirm){
+      axios
+        .delete(`cards/${cid}`)
+        .then(window.setTimeout(window.location.reload.bind(window.location), 100)
+          
+        )
+    }
+  }
+
+  function handleXClick(){
+    document.getElementById("editbox").setAttribute("style", "display: none !important")
+    document.getElementById("checkicon").setAttribute("style", "display: none !important")
+    document.getElementById("xicon").setAttribute("style", "display: none")
+    document.getElementById("cardnameside").setAttribute("style", "display: flex")
+  }
+ 
  async function getCardImg(){
     await axios.get(`/cardimages/${cname}`)
         .then(async (resp) => {
@@ -73,7 +111,7 @@ function Cards(){
                     card_image: foundImg,  
                     name: cname
                   }
-            )}).catch((e) => {
+            ).then(window.location.reload)}).catch((e) => {
               document.getElementById("imgWarning").setAttribute("style", "display: flex")
             })
   }
@@ -87,9 +125,17 @@ function Cards(){
                     <div class="cd-img">
                         <img src={cimage} ></img>
                         <div className="sidebar-namepos">
-                          <h2 >{cname}</h2>
-                          <i href="#" onClick={pencilClick} class="fa-solid fa-pencil icon-pencil-pos"></i>
-                          <input id="editbox" defaultValue={cname} className="edit-box"></input>
+                          <h2  id="cardnameside">{cname}</h2>
+                          {parsedtoken.Role == "Admin" &&
+                          <i onClick={handleDelete} class="fa-solid fa-2xl fa-trash icon-trash-pos"></i>}
+                          {parsedtoken.Role == "Admin" &&
+                          <i href="#" onClick={pencilClick} class="fa-solid fa-pencil icon-pencil-pos"></i>} 
+                          {parsedtoken.Role == "Admin" &&
+                          <input id="editbox" defaultValue={cname} className="edit-box"></input>}
+                          {parsedtoken.Role == "Admin" &&
+                          <i id="checkicon" onClick={handleCheckClick} class="fa-solid fa-lg fa-check icon-check-pos"></i>}
+                          {parsedtoken.Role == "Admin" &&
+                          <i id="xicon" onClick={handleXClick} class="fa-solid fa-lg fa-x icon-x-pos"></i>}
                           </div>
                           <div class="desc-box detail-txt">
                            <p>Description: {cdesc}</p> 

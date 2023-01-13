@@ -53,7 +53,7 @@ function SignUp(){
                             <input type="password" className="input-wrap input-pass" placeholder="Password" id="passTextbox" onInput={TextInputP}></input>
                             
                         </div>
-                        <a href="#" className="login-btn" onClick={handleSignUp}>Register</a>
+                        <a href="#" id="signbtn" className="login-btn" onClick={handleSignUp}>Register</a>
                     </div>
                 </div>
             </div>

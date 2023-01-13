@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -46,6 +47,7 @@ public class CardController {
         CreateCardResponse response = createCardUseCase.createCard(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
+    @CrossOrigin("http://localhost:3000")
     @PutMapping("{id}")
     public ResponseEntity<Void> updateCard(@PathVariable("id") long id,
                                               @RequestBody @Valid UpdateCardRequest request) {
@@ -53,6 +55,8 @@ public class CardController {
         updateCardUseCase.updateCard(request);
         return ResponseEntity.noContent().build();
     }
+    @CrossOrigin("http://localhost:3000")
+    @Transactional
     @DeleteMapping("{cardId}")
     public ResponseEntity<Void> deleteCard(@PathVariable int cardId) {
         deleteCardUseCase.deleteCard(cardId);

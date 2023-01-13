@@ -45,7 +45,7 @@ function Home(){
             <div className="scroll-hide">
                 <div class="home-wrap">
                     {localStorage.getItem("accesstoken") != null &&
-                <p className="loggedin-pos">Logged in!</p>}
+                <p id="loggedintxt" className="loggedin-pos">Logged in!</p>}
                 {localStorage.getItem("accesstoken") == null &&
                     <div id="login_box" className="login-wrap">
                         <h1>LOGIN</h1>
@@ -54,10 +54,10 @@ function Home(){
                             <input className="input-wrap input-user" placeholder="Username" id="userTextbox" onInput={TextInputU}></input>
                             <p id="PasswordLabel" className="input-label pass-label"></p>
                             <input type="password" className="input-wrap input-pass" placeholder="Password" id="passTextbox" onInput={TextInputP}></input>
-                            <a href="/signup" className="signup-pos">Sign up</a>
+                            <a href="/signup" id="signup" className="signup-pos">Sign up</a>
                         </div>
                         
-                        <a href="#" className="login-btn" onClick={LogInput}>Login</a>
+                        <a href="#" id="logbtn" className="login-btn" onClick={LogInput}>Login</a>
                     </div>}
                 </div>
             </div>
