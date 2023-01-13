@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="sem3indiv.controller.ExternalControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-13T08:43:54" hostname="LAPTOP-FQG2IJSA" time="0.477">
+<testsuite name="sem3indiv.controller.ExternalControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-13T08:51:58" hostname="LAPTOP-FQG2IJSA" time="0.505">
   <properties/>
-  <testcase name="getExternalCard_ShouldReturnImageLink()" classname="sem3indiv.controller.ExternalControllerTest" time="0.477"/>
+  <testcase name="getExternalCard_ShouldReturnImageLink()" classname="sem3indiv.controller.ExternalControllerTest" time="0.505"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

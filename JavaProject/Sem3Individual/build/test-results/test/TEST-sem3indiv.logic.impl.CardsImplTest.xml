@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="sem3indiv.logic.impl.CardsImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-01-13T08:43:56" hostname="LAPTOP-FQG2IJSA" time="0.009">
+<testsuite name="sem3indiv.logic.impl.CardsImplTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-01-13T08:52:00" hostname="LAPTOP-FQG2IJSA" time="0.01">
   <properties/>
   <testcase name="getCards_ShouldReturnAllCardsConverted()" classname="sem3indiv.logic.impl.CardsImplTest" time="0.006"/>
   <testcase name="getCard_ShouldReturnCardById()" classname="sem3indiv.logic.impl.CardsImplTest" time="0.003"/>
