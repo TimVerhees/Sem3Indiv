@@ -31,7 +31,9 @@ sonarqube-check:
 docker-compose:
   stage: docker
   script:
-    - docker compose up
+    - docker-compose down
+    - docker-compose build
+    - docker container ls -a
   only:
     - master
     - merge_request
