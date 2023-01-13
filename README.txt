@@ -2,7 +2,7 @@
         ***********READER GUIDE************
 
 JavaProject/Sem3Individual is the backend
-front-end-indiv-app is the front end
+front-end-indiv-app is the front end (Don't forget npm install!)
 
 Demo video.mp4 contains a demo video going over the flow of the website and Cypress.mp4 shows cypress.
 Sonarqube.png shows the result of the overal code and % coverage of the logic layer.
