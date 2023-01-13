@@ -86,7 +86,7 @@ function Cards(){
     if (confirm){
       axios
         .delete(`cards/${cid}`)
-        .then(window.setTimeout(window.location.reload.bind(window.location), 100)
+        .then(window.setTimeout(window.location.reload.bind(window.location), 1300)
           
         )
     }
@@ -111,7 +111,7 @@ function Cards(){
                     card_image: foundImg,  
                     name: cname
                   },
-                  setTimeout(window.location.reload.bind(window.location), 1000)
+                  setTimeout(window.location.reload.bind(window.location), 1300)
             ).then(window.location.reload)}).catch((e) => {
               document.getElementById("imgWarning").setAttribute("style", "display: flex")
             })
