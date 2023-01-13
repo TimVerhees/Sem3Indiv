@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="nl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CardController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Sem3Individual</a> &gt; <a href="index.source.html" class="el_package">sem3indiv.controller</a> &gt; <span class="el_source">CardController.java</span></div><h1>CardController.java</h1><pre class="source lang-java linenums">package sem3indiv.controller;
 
+import sem3indiv.config.security.isauthenticated.IsAuthenticated;
 import sem3indiv.domain.*;
 import sem3indiv.logic.*;
 import lombok.AllArgsConstructor;
@@ -7,13 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(&quot;http://localhost:3000&quot;)
+@CrossOrigin(&quot;//localhost:3000&quot;)
 @RequestMapping(&quot;/cards&quot;)
-<span class="fc" id="L16">@AllArgsConstructor</span>
+<span class="fc" id="L18">@AllArgsConstructor</span>
 public class CardController {
     private final GetCardsUseCase getCardsUseCase;
     private final GetCardUseCase getCardUseCase;
@@ -24,35 +26,37 @@ public class CardController {
     @CrossOrigin(&quot;http://localhost:3000&quot;)
     @GetMapping
     public ResponseEntity&lt;GetCardsResponse&gt; getCards() {
-<span class="fc" id="L27">        return ResponseEntity.ok(getCardsUseCase.getCards());</span>
+<span class="fc" id="L29">        return ResponseEntity.ok(getCardsUseCase.getCards());</span>
     }
 
     @CrossOrigin(&quot;http://localhost:3000&quot;)
     @GetMapping(&quot;{id}&quot;)
     public ResponseEntity&lt;Card&gt; getCard(@PathVariable(value = &quot;id&quot;) final long id) {
-<span class="nc" id="L33">        final Optional&lt;Card&gt; cardOptional = getCardUseCase.getCard(id);</span>
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (cardOptional.isEmpty()) {</span>
-<span class="nc" id="L35">            return ResponseEntity.notFound().build();</span>
+<span class="nc" id="L35">        final Optional&lt;Card&gt; cardOptional = getCardUseCase.getCard(id);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (cardOptional.isEmpty()) {</span>
+<span class="nc" id="L37">            return ResponseEntity.notFound().build();</span>
         }
-<span class="nc" id="L37">        return ResponseEntity.ok().body(cardOptional.get());</span>
+<span class="nc" id="L39">        return ResponseEntity.ok().body(cardOptional.get());</span>
     }
-
+    @IsAuthenticated
+    @RolesAllowed(&quot;ROLE_Admin&quot;)
     @PostMapping()
+    @CrossOrigin(&quot;http://localhost:3000&quot;)
     public ResponseEntity&lt;CreateCardResponse&gt; createCard(@RequestBody @Valid CreateCardRequest request) {
-<span class="nc" id="L42">        CreateCardResponse response = createCardUseCase.createCard(request);</span>
-<span class="nc" id="L43">        return ResponseEntity.status(HttpStatus.CREATED).body(response);</span>
+<span class="nc" id="L46">        CreateCardResponse response = createCardUseCase.createCard(request);</span>
+<span class="nc" id="L47">        return ResponseEntity.status(HttpStatus.CREATED).body(response);</span>
     }
     @PutMapping(&quot;{id}&quot;)
     public ResponseEntity&lt;Void&gt; updateCard(@PathVariable(&quot;id&quot;) long id,
                                               @RequestBody @Valid UpdateCardRequest request) {
-<span class="nc" id="L48">        request.setId(id);</span>
-<span class="nc" id="L49">        updateCardUseCase.updateCard(request);</span>
-<span class="nc" id="L50">        return ResponseEntity.noContent().build();</span>
+<span class="nc" id="L52">        request.setId(id);</span>
+<span class="nc" id="L53">        updateCardUseCase.updateCard(request);</span>
+<span class="nc" id="L54">        return ResponseEntity.noContent().build();</span>
     }
     @DeleteMapping(&quot;{cardId}&quot;)
     public ResponseEntity&lt;Void&gt; deleteCard(@PathVariable int cardId) {
-<span class="nc" id="L54">        deleteCardUseCase.deleteCard(cardId);</span>
-<span class="nc" id="L55">        return ResponseEntity.noContent().build();</span>
+<span class="nc" id="L58">        deleteCardUseCase.deleteCard(cardId);</span>
+<span class="nc" id="L59">        return ResponseEntity.noContent().build();</span>
 
     }
 }

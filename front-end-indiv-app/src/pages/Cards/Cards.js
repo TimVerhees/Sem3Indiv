@@ -58,7 +58,9 @@ function Cards(){
       return parsedtoken}
     }
   TokenParser()
- 
+ function pencilClick(){
+  document.getElementById("editbox").setAttribute("style", "display: flex")
+ }
  async function getCardImg(){
     await axios.get(`/cardimages/${cname}`)
         .then(async (resp) => {
@@ -84,7 +86,11 @@ function Cards(){
                 <div class="sidebar">
                     <div class="cd-img">
                         <img src={cimage} ></img>
+                        <div className="sidebar-namepos">
                           <h2 >{cname}</h2>
+                          <i href="#" onClick={pencilClick} class="fa-solid fa-pencil icon-pencil-pos"></i>
+                          <input id="editbox" defaultValue={cname} className="edit-box"></input>
+                          </div>
                           <div class="desc-box detail-txt">
                            <p>Description: {cdesc}</p> 
                            <p>Attack: {catk} Defense: {cdef}</p>

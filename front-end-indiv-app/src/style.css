@@ -481,3 +481,22 @@ label{
     margin-right: 20px;
     transition: transform 0.25s;
 }
+.sidebar-namepos{
+    display: inline-flex;
+}
+.icon-pencil-pos{
+    margin-top: 29px;
+    margin-left: 5px;
+    height:fit-content;
+}
+.edit-box{
+    height: 40px;
+    display: none;
+    position: absolute;
+    justify-content: center;
+    width: 225px;
+    margin-left: -35px;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: large;
+}

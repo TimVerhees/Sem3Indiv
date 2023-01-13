@@ -63,7 +63,7 @@ import java.util.List;
 <span class="nc" id="L63">                        .stream()</span>
 <span class="nc" id="L64">                        .map(role -&gt; new SimpleGrantedAuthority(SPRING_SECURITY_ROLE_PREFIX + role))</span>
 <span class="nc" id="L65">                        .toList());</span>
-
+<span class="nc" id="L66">        System.out.println(authorities);</span>
 <span class="nc" id="L67">        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(</span>
 <span class="nc" id="L68">                userDetails, null, userDetails.getAuthorities());</span>
 <span class="nc" id="L69">        usernamePasswordAuthenticationToken.setDetails(accessToken);</span>
